@@ -24,8 +24,10 @@ public class MessageSender implements Runnable {
             String name = br.readLine();
             System.out.println("Enter your message, or type exit for quit");
             String msg = br.readLine();
+            Message message = new Message(name, msg);
             while (!"exit".equalsIgnoreCase(msg)) {
-                Message message = new Message(name, msg);
+                message.setMessage(msg);
+                oos.reset();
                 oos.writeObject(message);
                 msg = br.readLine();
             }
